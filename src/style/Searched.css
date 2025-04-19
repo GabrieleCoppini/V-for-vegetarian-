@@ -1,0 +1,147 @@
+.searched {
+    margin: 20px 20px;
+    height: 100%;
+    position: relative;
+
+}
+.grid-searched::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+   
+    background: repeating-linear-gradient(
+        to bottom,
+        #6d6868,
+        #798577 1px,
+        transparent 1px,
+        transparent 20px
+    );
+    opacity: 0.5; 
+    z-index: -1; 
+
+}
+
+
+.grid-searched{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-gap: 2rem;
+    margin-top: 20px;
+   
+}
+
+
+
+
+.card-searched {
+    position: relative;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5%;
+    padding:  10px;
+    text-align: center;
+    background-color: aliceblue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
+    
+
+    img {
+        transition: transform 0.3s ease; 
+        object-fit: cover;
+        border-radius: 5%;
+        width: 100%;
+        height: 300px;
+        
+        
+        
+    }
+
+  
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+.card-searched:hover {
+        background-color: #8511118a;
+      }
+
+
+
+}
+
+.card-searched:hover img  {
+    transform: scale(1.1); 
+}
+
+.searched-title {
+    height: 10dvh;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+   
+
+}
+
+
+.searched button {
+    width: 100%;
+    font-size: clamp(1.2rem , 1.5vw, 1.5rem);
+    border: none;
+    border-radius: 4px;
+    background-color: #FFA955;
+    color: #fff;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    
+  
+  }
+  
+  .searched button:hover {
+    background-color: #8511118a;
+  }
+
+  .loading-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+  @media screen and (max-width: 468px) {
+    .card-searched img{
+
+        width: 100%;
+        height: 200px;
+           
+        
+
+      
+        
+    
+    }
+    .searched button {
+        width: 100%;
+    
+        margin-top: 5px;
+        
+      
+      }
+
+  
+
+
+
+    
+  }
