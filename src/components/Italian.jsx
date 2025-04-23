@@ -31,7 +31,9 @@ const Italian = () => {
 
 
   console.log(italianData);
-
+if (loading) {
+  return <div>Loading...</div>;
+}
 
 
   if (error) {
@@ -41,45 +43,43 @@ const Italian = () => {
   return (
     <div className="wrapper">
       <div className="ctn-h">
-      <h3 className="text-h">Italian Recipes</h3>
+      <h1 className="text-h">Italian Recipes</h1>
      <img src={italian} alt="italia" />
       </div>
 
     
-  
+    
     
       <Splide
-        options={{
-          perPage: 3,
-          arrows: false,
-          pagination: false,
-          drag: "free",
-          gap: "10px",
-         
-        
-          
-        }}
-      
-       
-      >
+              options={{
+               
+               
+                arrows: true,
+                pagination: false,
+                drag: 'free',
+                gap: '10px',
+             
+              }}
+            >
         {italianData.map((recipe) => (
-          <SplideSlide key={recipe.id}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            maxWidth: "16dvw",
-            margin: 0,
-            cursor: "pointer",
-          }}
-          >
+           <SplideSlide
+           key={recipe.id}
+           style={{
+             display: 'flex',
+             justifyContent: 'center',
+             alignItems: 'center',
+             maxWidth: '16vw', 
+             margin: 0,
+             cursor: 'pointer',
+           }}
+         >
             <div className="card">
             <div className="recipe-info">
             <div className="recipe-title">
-              <div className="texture-recipe">
+              
               <h3>{recipe.title}</h3>
              
-              </div>
+             
              
               </div>
               <Link to={'/recipe/' + recipe.id}>

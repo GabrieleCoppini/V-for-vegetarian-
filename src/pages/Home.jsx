@@ -1,10 +1,12 @@
+import React from "react";
 import Italian from "../components/Italian";
 import Japanese from "../components/Japanese";
+
 import {motion} from "framer-motion";
 
 
 
-const Home = () => {
+function Home () {
     return (
         <div>
              <motion.div

@@ -24,7 +24,7 @@ const Search = () => {
               <form className="search" onSubmit={handleSearch} >
 
               <div className="logo">
-               <Link to="/">
+               <Link to="/Home">
                <div className="logo">
         <img src={logo} alt="Company Logo" style={{ width: '60px', height: 'auto', marginLeft: '2dvw'}} />
       </div>

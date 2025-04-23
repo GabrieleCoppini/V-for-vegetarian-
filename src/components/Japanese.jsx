@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import BookmarkIcon from "./BookmarkIcon";
 import japan from "../assets/icons/japan.png";
-import '@splidejs/react-splide/css';
+
 import "../style/Cuisine.css";
 
 const Japanese = () => {
@@ -53,36 +53,34 @@ const Japanese = () => {
   
     
       <Splide
-        options={{
-          perPage: 3,
-          arrows: false,
-          pagination: false,
-          drag: "free",
-          gap: "10px",
-         
-        
-          
-        }}
-      
-       
-      >
+              options={{
+                
+               
+                arrows: true,
+                pagination: false,
+                drag: 'free',
+                gap: '10px',
+             
+              }}
+            >
         {japaneseData.map((recipe) => (
-          <SplideSlide key={recipe.id}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            maxWidth: "16dvw",
-            margin: 0,
-            cursor: "pointer",
-          }}
-          >
+      <SplideSlide
+      key={recipe.id}
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        maxWidth: '16vw', 
+        margin: 0,
+        cursor: 'pointer',
+      }}
+    >
             <div className="card">
             <div className="recipe-info">
             <div className="recipe-title">
-              <div className="texture-recipe">
+              {/* <div className="texture-recipe"> */}
               <h3>{recipe.title}</h3>
-              </div>
+              {/* </div> */}
              
               </div>
               <Link to={'/recipe/' + recipe.id}>
