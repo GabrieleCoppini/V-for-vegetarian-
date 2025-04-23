@@ -6,7 +6,7 @@ Benvenuto nel nostro sito di ricette vegetariane! Qui troverai una vasta selezio
 
 ### Breakdown of the Example
 
-- **Link Text**: Visita il sito Clicca qui.
+- **Visita il sito Clicca qui**
 - **URL**: https://v-for-vegetarian.web.app/Home
 
 ## Indice
