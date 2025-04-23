@@ -1,0 +1,16 @@
+.splideSlide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 16vw;
+    margin: 0;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .splideSlide {
+        max-width: 50vw;
+    }
+
+    
+}

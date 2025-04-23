@@ -51,27 +51,28 @@ if (loading) {
     
     
       <Splide
-              options={{
+                options={{
+                
                
+                  arrows: true,
+                  pagination: false,
+                  drag: 'free',
+                  gap: '10px',
                
-                arrows: true,
-                pagination: false,
-                drag: 'free',
-                gap: '10px',
-             
-              }}
-            >
+                }}
+              >
         {italianData.map((recipe) => (
            <SplideSlide
            key={recipe.id}
-           style={{
-             display: 'flex',
-             justifyContent: 'center',
-             alignItems: 'center',
-             maxWidth: '16vw', 
-             margin: 0,
-             cursor: 'pointer',
-           }}
+           className="splideSlide"
+          //  style={{
+          //    display: 'flex',
+          //    justifyContent: 'center',
+          //    alignItems: 'center',
+          //    maxWidth: '16vw', 
+          //    margin: 0,
+          //    cursor: 'pointer',
+          //  }}
          >
             <div className="card">
             <div className="recipe-info">

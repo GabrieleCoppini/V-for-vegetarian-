@@ -235,13 +235,17 @@
     
     .recipe-info h3{
         
-        text-transform: lowercase;
-        font-size: auto;
+        /* text-transform: lowercase; */
+        font-size: 9px;
+
+      
+       
+        
     }
 
     .recipe-button svg{
-        width: 7px;
-        height: 7px;
+        width: 10px;
+        height: 10px;
     }
 
   }

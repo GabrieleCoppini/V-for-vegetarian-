@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipeInfo, clearRecipe } from '../stores/RecipeSlice';
-import { addBookmark, removeBookmark } from '../stores/BookMarksSlice'; 
-import { selectIsRecipeBookmarked } from '../utils/helpers';
+import Ingredient from '../components/Ingredients';
 import { useParams } from 'react-router-dom';
 import BookmarkIcon from '../components/BookmarkIcon';
 import { ImSpoonKnife } from "react-icons/im";
@@ -10,15 +9,10 @@ import { handleImgError } from '../utils/helpers';
 import '../style/Recipe.css';
 
 const Recipe = () => {
+    const [numOfGuests, setNumOfGuests] = useState(1);
     const dispatch = useDispatch();
     const { id } = useParams();
     const { recipeData, loading, error } = useSelector((state) => state.recipe);
-    const isBookmarked = useSelector((state) => selectIsRecipeBookmarked(state, recipeData));
-
-    const [servings, setServings] = useState(1);
-
-
-    
 
     useEffect(() => {
         dispatch(fetchRecipeInfo(id));
@@ -28,23 +22,13 @@ const Recipe = () => {
         };
     }, [dispatch, id]);
 
-
-
-    // const handleBookmarkToggle = () => {
-    //     if (isBookmarked) {
-    //         dispatch(removeBookmark(recipeData.title));
-    //     } else {
-    //         dispatch(addBookmark(recipeData));
-    //     }
-    // };
-
-    const incrementServings = () => {
-        setServings(prev => prev + 1);
+    const incrementGuests = () => {
+        setNumOfGuests(prev => prev + 1);
     };
 
-    const decrementServings = () => {
-        if (servings > 1) {
-            setServings(prev => prev - 1);
+    const decrementGuests = () => {
+        if (numOfGuests > 1) {
+            setNumOfGuests(prev => prev - 1);
         }
     };
 
@@ -57,8 +41,7 @@ const Recipe = () => {
     }
 
     if (!recipeData) {
-        return <div>Nothing, recipes found 
-            Please Try again.</div>;
+        return <div>Nessuna ricetta trovata. Per favore riprova.</div>;
     }
 
     return (
@@ -73,14 +56,14 @@ const Recipe = () => {
             </div>
 
             <div className="rec-img-desc">
-                {
-
-        recipeData.image &&  <img 
-        src={recipeData.image}
-        alt={recipeData.title}
-        onError={handleImgError}
-        style={{ width: '100%', height: 'auto' }}
-    />}
+                {recipeData.image && (
+                    <img 
+                        src={recipeData.image}
+                        alt={recipeData.title}
+                        onError={handleImgError}
+                        style={{ width: '100%', height: 'auto' }}
+                    />
+                )}
                 <div className="rec-desc">
                     <h2>Description</h2>
                     <p dangerouslySetInnerHTML={{ __html: recipeData.summary }}></p> 
@@ -91,9 +74,13 @@ const Recipe = () => {
                 <div className="servings-counter">
                     <ImSpoonKnife size="1.5em" />
                     <h3>Serving</h3>
-                    <button onClick={decrementServings}>-</button>
-                    <span>{servings}</span>
-                    <button onClick={incrementServings}>+</button>
+                    <button onClick={decrementGuests}>-</button>
+                    <input
+                       
+                        value={numOfGuests}
+                        onChange={(e) => setNumOfGuests(Math.max(1, e.target.value))}
+                    />
+                    <button onClick={incrementGuests}>+</button>
                 </div>
 
                 <div className="rec-time">
@@ -107,15 +94,14 @@ const Recipe = () => {
                         <h2>Ingredients</h2>
                     </div>
                     <ul>
-                        {recipeData.extendedIngredients.map((ingredient) => {
-                            const ingredientAmount = (ingredient.amount / recipeData.servings) * servings;
-                            const displayAmount = (servings === 1 && ingredientAmount < 1) ? "1/2" : ingredientAmount.toFixed(2).replace(/\.00$/, '');
-                            return (
-                                <li key={ingredient.id}>
-                                    {`${displayAmount} ${ingredient.unit} ${ingredient.name}`}
-                                </li>
-                            );
-                        })}
+                        {recipeData.extendedIngredients.map((ingredient) => (
+                            <Ingredient
+                                key={ingredient.id}
+                                ingredients={ingredient}
+                                servings={recipeData.servings}
+                                numOfGuests={numOfGuests}
+                            />
+                        ))}
                     </ul>
                 </div>
 

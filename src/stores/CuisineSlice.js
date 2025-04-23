@@ -15,7 +15,7 @@ export const fetchItalianCuisine = createAsyncThunk(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=italian&excludeIngredients=fish,meat`
     );
     console.log(response.data);
-    return response.data.results; // Restituisce l'intero oggetto
+    return response.data.results;
   }
 );
 
@@ -26,7 +26,7 @@ export const fetchJapaneseCuisine = createAsyncThunk(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=japanese&excludeIngredients=fish,meat&number=12`
     );
     console.log(response.data);
-    return response.data.results; // Restituisce l'intero oggetto
+    return response.data.results;
   }
 );
 
@@ -45,7 +45,7 @@ const cuisineSlice = createSlice({
       .addCase(fetchItalianCuisine.fulfilled, (state, action) => {
         state.loading = false;
         state.italianData = action.payload;
-        // Salva l'intero oggetto nel localStorage
+
         localStorage.setItem("italianData", JSON.stringify(action.payload));
       })
       .addCase(fetchItalianCuisine.rejected, (state, action) => {
@@ -61,7 +61,7 @@ const cuisineSlice = createSlice({
       .addCase(fetchJapaneseCuisine.fulfilled, (state, action) => {
         state.loading = false;
         state.japaneseData = action.payload;
-        // Salva l'intero oggetto nel localStorage
+
         localStorage.setItem("japaneseData", JSON.stringify(action.payload));
       })
       .addCase(fetchJapaneseCuisine.rejected, (state, action) => {

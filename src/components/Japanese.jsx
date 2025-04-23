@@ -7,6 +7,7 @@ import { useState } from "react";
 import BookmarkIcon from "./BookmarkIcon";
 import japan from "../assets/icons/japan.png";
 
+import "../style/Splide-Splideslide.css"; 
 import "../style/Cuisine.css";
 
 const Japanese = () => {
@@ -64,16 +65,17 @@ const Japanese = () => {
               }}
             >
         {japaneseData.map((recipe) => (
-      <SplideSlide
+      <SplideSlide 
       key={recipe.id}
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        maxWidth: '16vw', 
-        margin: 0,
-        cursor: 'pointer',
-      }}
+      className="splideSlide"
+      // style={{
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   maxWidth: '16vw', 
+      //   margin: 0,
+      //   cursor: 'pointer',
+      // }}
     >
             <div className="card">
             <div className="recipe-info">
