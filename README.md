@@ -4,6 +4,11 @@
 
 Benvenuto nel nostro sito di ricette vegetariane! Qui troverai una vasta selezione di ricette deliziose e salutari, tutte senza carne. Che tu sia un vegetariano esperto o semplicemente alla ricerca di piatti più sani, abbiamo qualcosa per te!
 
+### Breakdown of the Example
+
+- **Link Text**: Visita il sito Clicca qui.
+- **URL**: https://v-for-vegetarian.web.app/Home
+
 ## Indice
 
 - [Caratteristiche](#caratteristiche)
